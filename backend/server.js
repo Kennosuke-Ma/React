@@ -58,6 +58,34 @@ app.get("/api/:table", async (req, res) => {
   res.json(rows);
 });
 
+app.use(express.json());
+app.post("/api/:table", async(req, res) => {
+  const table = tables[req.params.table];
+
+  if (!table) {
+    return res.status(404).json({
+      message: "Table not found"
+    });
+  }
+
+  const { name, age } = req.body;
+
+  const [result] = await db.execute(
+    "INSERT INTO users (name, age) VALUES (?, ?)",
+    [name, age]
+  );
+
+  res.json({
+    id: result.insertId,
+    name: name,
+    age: age
+  });
+
+});
+
+
+
+
 app.listen(PORT, () => {
     console.log(`Server Start : http://localhost:${PORT}`);
 });

@@ -1,0 +1,24 @@
+.side-main {
+    width: 200px;
+    min-height: calc(100vh - 61px);
+    border-right: 1px solid #ccc;
+}
+
+.side-ul {
+    padding: 0;
+}
+
+.side-link {
+    width: 100% - 20px;
+    height: 40px;
+    padding-left: 20px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.side-link:hover {
+    text-decoration: underline;
+    background-color: dimgray;
+    cursor: pointer;
+}
